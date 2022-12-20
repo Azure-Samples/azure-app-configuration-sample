@@ -1,0 +1,36 @@
+{
+    "appConfiguration": {
+        "name":"appConfiguration"
+    },
+    "uamis": {
+        "appconfigDemo": "appconfigDemo"
+    },
+    "website": {
+        "appServiceplan": "AppServicePlan",
+        "webapp": "democonfwebapp"
+    },
+    "features": {
+        "magic": {
+            "name": "DoMagic",
+            "default" : "false"
+        },
+        "showDebugView": {
+            "name": "ShowDebugView",
+            "default" : "false"
+        },
+        "autoUpdateLatestVersionSecrets" : {
+            "name": "AutoUpdateLatestVersionSecrets",
+            "default" : "true"
+        }
+    },
+    "monitor": {
+        "appinsights": "appinsights",
+        "logAnalyticsWorkspace" :"logAnalyticsWorkspace"
+    },
+    "serviceBus" : {
+        "nameSpace" : "servicebus"
+    },
+    "keyVault" : {
+        "name" : "kv"
+    }
+}
