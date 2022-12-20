@@ -1,0 +1,22 @@
+{
+  "Logging": {
+    "IncludeScopes": true,
+    "LogLevel": {
+      "Default": "Trace",
+      "Microsoft.AspNetCore": "Warning"
+    },
+    "ApplicationInsights": {
+      "IncludeScopes": true,
+      "LogLevel": {
+        "Microsoft": "Warning",
+        "Azure.Data.Tables": "Information",
+        "WebApi" : "Trace"
+      }
+    }
+  },
+  "DemoSettings" : {
+    "SomeInteger" : 1111111,
+    "SomeString": "Demo",
+    "SomeGlobalString" : "Global, no tag"
+  }
+}

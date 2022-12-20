@@ -1,0 +1,7 @@
+{
+  "initConfig": {
+    "resourceGroupName": "",
+    "subscriptionId": "",
+    "location": "westeurope"
+  }
+}
