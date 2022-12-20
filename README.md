@@ -38,22 +38,21 @@ See the [external configuration store pattern](https://learn.microsoft.com/en-us
 
 Installation will provision the azure resources:
 
-<img   width=450 src="docs/img/appconfigScreenShot1.png">
+<img   width=600 src="docs/img/appconfigScreenShot1.png">
 
 To experiment with the sample, launch a browser and go to the App Service web app uri. A swagger contract will open. 
 
 Or run `./test.sh` which will call the `AppConfigDemo` API  which returns values from App Configuration - configuration settings, secret (for test) and feature will be returned. To see that changes in app configuration is pushed to the website, toggle the feature flag `DoMagic$Production` on. 
 
+<img    src="docs/img/appconfigFeatures.png">
 
 
-![image-20221208171258137](docs/img/appconfigFeatures.png)
 
 After a few seconds, any new request against the `AppConfigDemo` API will show feature flag enabled.
 
 Change the `DemoSettings:SomeString` in the JSON document in `API:Settings:$Production` entry:
 
-![image-20221208171855235](docs/img/configurationExplorer.png)
-
+<img   src="docs/img/configurationExplorer.png">
 
 Call the API again to see the change.
 
@@ -229,8 +228,7 @@ To refresh to latest version of secret, enable feature flag `AutoUpdateLatestVer
 
 > **_Tip:_** Enable the feature flag `AutoUpdateLatestVersionSecrets` to dynamically refresh the secrets exposed with 'Latest Version' in App Service.
 
-![image-20221215150644372](docs/img/latestVersionSecret.png)
-
+<img    src="docs/img/latestVersionSecret.png">
 
 
 [Tutorial for using Azure App Configuration Key Vault references in an ASP.NET Core app | Microsoft Learn](https://learn.microsoft.com/en-us/azure/azure-app-configuration/use-key-vault-references-dotnet-core?tabs=core5x)
