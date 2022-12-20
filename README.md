@@ -228,7 +228,7 @@ To refresh to latest version of secret, enable feature flag `AutoUpdateLatestVer
 
 > **_Tip:_** Enable the feature flag `AutoUpdateLatestVersionSecrets` to dynamically refresh the secrets exposed with 'Latest Version' in App Service.
 
-<img    src="docs/img/latestVersionSecret.png">
+<img    src="docs/img/latestversionSecret.png">
 
 
 [Tutorial for using Azure App Configuration Key Vault references in an ASP.NET Core app | Microsoft Learn](https://learn.microsoft.com/en-us/azure/azure-app-configuration/use-key-vault-references-dotnet-core?tabs=core5x)
