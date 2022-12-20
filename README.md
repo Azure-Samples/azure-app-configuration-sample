@@ -1,6 +1,27 @@
+---
+page_type: sample
+languages:
+- csharp
+- bash
+- azurecli
+- bicep
+
+products:
+- azure
+- azure-app-service
+- azure-app-service-web
+- azure-key-vault
+- aspnet-core
+- dotnet-core
+- azure-app-configuration
+
+name: External configuration store using Azure App Configuration Service
+description: "This sample shows how the external configuration store 'Azure App Configuration service' is setup and used for dynamic configuration. Clients are subscribing to change events from App Configuration and reconfiguring clients at runtime. Secrets are served through App Configuration, backed by Key Vault. Managed identity is used to access App Configuration and Key Vault."
+---
+
 # Dynamic configuration using Azure App Configuration Service
 
-This sample shows how the configuration store Azure App Configuration service is setup and used do dynamic configuration. Clients are subscribing to change events from App Configuration service and reconfiguring clients at runtime. Secrets are served through App Configuration, backed by Key Vault. Managed identity is used to access App Configuration and Key Vault.
+This sample shows how the external configuration store 'Azure App Configuration service' is setup and used for dynamic configuration. Clients are subscribing to change events from App Configuration and reconfiguring clients at runtime. Secrets are served through App Configuration, backed by Key Vault. Managed identity is used to access App Configuration and Key Vault.
 
 See the [external configuration store pattern](https://learn.microsoft.com/en-us/azure/architecture/patterns/external-configuration-store) on Azure Architecture Center.
 
