@@ -356,4 +356,3 @@ Try and changing settings in `API:Settings$Development`, to see events arriving 
 [Azure App Configuration resiliency and disaster recovery | Microsoft Learn](https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-disaster-recovery?tabs=core3x)
 
 
-
