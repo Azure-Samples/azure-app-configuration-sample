@@ -52,7 +52,7 @@ After a few seconds, any new request against the `AppConfigDemo` API will show f
 
 Change the `DemoSettings:SomeString` in the JSON document in `API:Settings:$Production` entry:
 
-<img   src="docs/img/configurationExplorer.png">
+<img   src="docs/img/configurationexplorer.png">
 
 Call the API again to see the change.
 
@@ -354,5 +354,4 @@ Try and changing settings in `API:Settings$Development`, to see events arriving 
 [External Configuration Store pattern - Azure Architecture Center | Microsoft Learn](https://learn.microsoft.com/en-us/azure/architecture/patterns/external-configuration-store)
 
 [Azure App Configuration resiliency and disaster recovery | Microsoft Learn](https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-disaster-recovery?tabs=core3x)
-
 
