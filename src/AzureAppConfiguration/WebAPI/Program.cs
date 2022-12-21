@@ -1,11 +1,9 @@
 using Azure.Identity;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Extensions.Configuration.AzureAppConfiguration;
-using Microsoft.Extensions.Options;
 using Microsoft.FeatureManagement;
 using Microsoft.FeatureManagement.FeatureFilters;
 using Shared.Middelware.ApplicationInsights.TelemetryInitializers;
-using Shared.Middelware.ApplicationInsights.TelemetryProcessors;
 using Shared.Services;
 using Shared.Settings;
 using System.Reflection;
