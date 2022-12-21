@@ -20,7 +20,16 @@ fi
 
 
 if  [ $( which dotnet   | wc -l) = 0  ]; then
-    export PATH=$PATH:$HOME/.dotnet:$HOME/.dotnet/tools
+    if  [ $(  grep "#DOTNET path" ~/.profile   | wc -l) = 0  ]; then
+        echo "adding dotnet path to .profile"
+        touch ~/.profile
+        echo "#DOTNET path" >> ~/.profile
+        echo "PATH=\$PATH:\$HOME/.dotnet:\$HOME/.dotnet/tools" >> ~/.profile
+        source ~/.profile 
+        exit 1
+    else
+        echo "Already in .profile"
+    fi    
 else
     echo "dotnet already in path"
 fi
