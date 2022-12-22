@@ -66,7 +66,7 @@ echo "${deploymentResultJSON}" > results.json
 
 if ! [ $( echo "${deploymentResultJSON}" | jq -r .properties.provisioningState ) = "Succeeded" ]; then
     echo "Deployment failed. Do not proceed"
-    exit 1;
+    exit 1
 fi
 
 put-value      '.connectionStrings.applicationInsights' "$(echo "${deploymentResultJSON}" | jq -r '.properties.outputs.applicationInsights_ConnectionString.value' )" 
