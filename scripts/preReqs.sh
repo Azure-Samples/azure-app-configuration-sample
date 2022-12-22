@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt install jq zip
+sudo apt install jq zip curl
 
 
 if  [ $( which az   | wc -l) = 0  ]; then
