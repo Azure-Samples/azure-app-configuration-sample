@@ -38,13 +38,13 @@ See the [external configuration store pattern](https://learn.microsoft.com/en-us
 
 Installation will provision the azure resources:
 
-<img   width=600 src="docs/img/appconfigScreenShot1.png">
+![Azure Resources](docs/img/appconfigScreenShot1.png)
 
 To experiment with the sample, launch a browser and go to the App Service web app uri. A swagger contract will open. 
 
 Or run `./test.sh` which will call the `AppConfigDemo` API  which returns values from App Configuration - configuration settings, secret (for test) and feature will be returned. To see that changes in app configuration is pushed to the website, toggle the feature flag `DoMagic$Production` on. 
 
-<img    src="docs/img/appconfigFeatures.png">
+![Feature Flag Toggle](docs/img/appconfigFeatures.png)
 
 
 
@@ -52,7 +52,7 @@ After a few seconds, any new request against the `AppConfigDemo` API will show f
 
 Change the `DemoSettings:SomeString` in the JSON document in `API:Settings:$Production` entry:
 
-<img   src="docs/img/configurationexplorer.png">
+![Configuration Explorer Value Change](docs/img/configurationexplorer.png)
 
 Call the API again to see the change.
 
@@ -99,20 +99,10 @@ First, consider how to query configuration settings for a service, for an enviro
 
 App Configuration implements a Label concept, which can be used as a way of specifying the environment.
 
-<table>
-	<tr>
-    <th width:50%>Configuration file - bundled with service</th>
-    <th width:50%>App Configuration - externalized from service</th>
-  </tr>
-    <tr style="vertical-align:top">
-    	<td>appsetting.json: "Logging:LogLevel:Microsoft.AspNetCore" : "Information"  </td>
-    	<td>Label=blank "Microservice1:Logging:LogLevel:Microsoft.AspNetCore" : "Information" </td>
-    </tr>
-        <tr style="vertical-align:top">
-    	<td>appsetting.production.json "Logging:LogLevel:Microsoft.AspNetCore" : "Warning" </td>
-    	<td>Label=production "Microservice1:Logging:LogLevel:Microsoft.AspNetCore" : "Warning"</td>
-    </tr>
-</table>
+| Configuration file - bundled with service | App Configuration - externalized from service |
+| --------------------- | ------------------------------------------------------------ |
+| appsetting.json: "Logging:LogLevel:Microsoft.AspNetCore" : "Information" | Label=blank "Microservice1:Logging:LogLevel:Microsoft.AspNetCore" : "Information" |
+| appsetting.production.json "Logging:LogLevel:Microsoft.AspNetCore" : "Warning" | Label=production "Microservice1:Logging:LogLevel:Microsoft.AspNetCore" : "Warning" |
 
 Labels are important, when a client service needs to query for configuration. Labels can contain the environment name, and the prefix (eg 'Microservice1:') can be used from subscribing services, hosted in a given environment.
 
@@ -226,9 +216,10 @@ With that, you loose the ability to automatically rotate secrets before the expi
 
 To refresh to latest version of secret, enable feature flag `AutoUpdateLatestVersionSecrets`. Processing of messages are handled in `ConfigurationChangeSubscriberService.MessageHandler`. Enabling the feature flag `AutoUpdateLatestVersionSecrets` will *include* Key Vault event processing besides App Configuration events. If a Key Vault event is received, a configuration refresh is performed - which in will read whatever is configured in App Configuration, aka "Latest Version".  If a specific secret version is exposed in App Configuration, then you have to update/choose the right version as you would do usually. 
 
-> **_Tip:_** Enable the feature flag `AutoUpdateLatestVersionSecrets` to dynamically refresh the secrets exposed with 'Latest Version' in App Service.
+> [!TIP]
+> Enable the feature flag `AutoUpdateLatestVersionSecrets` to dynamically refresh the secrets exposed with 'Latest Version' in App Service.
 
-<img    src="docs/img/latestversionSecret.png">
+![Latest Version Secret](docs/img/latestversionSecret.png)
 
 
 [Tutorial for using Azure App Configuration Key Vault references in an ASP.NET Core app | Microsoft Learn](https://learn.microsoft.com/en-us/azure/azure-app-configuration/use-key-vault-references-dotnet-core?tabs=core5x)
@@ -262,7 +253,7 @@ requests
 
 
 
-<img    src="docs/img/kql.png">
+![KQL Results](docs/img/kql.png)
 
 Above shows, that theres a time period where nodes have different configurations, which can be changed by setting `ChangeSubscriptionSettings.MaxDelayBeforeCacheIsMarkedDirtyInSeconds`.
 
