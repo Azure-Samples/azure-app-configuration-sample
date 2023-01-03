@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 using Microsoft.FeatureManagement;
 using Microsoft.FeatureManagement.FeatureFilters;
 using Shared.Middelware.ApplicationInsights.TelemetryInitializers;
+using Shared.Middelware.ApplicationInsights.TelemetryProcessors;
 using Shared.Services;
 using Shared.Settings;
 using System.Reflection;
@@ -105,9 +106,10 @@ builder.Services.AddApplicationInsightsTelemetry(opts =>
 
 builder.Services.AddSingleton<ITelemetryInitializer, DimensionTagsTelemetryInitializer>();
 builder.Services.AddSingleton<ITelemetryInitializer, MetricTagsTelemetryInitializer>();
+
 bool onlyLogFailedDependencies = bool.Parse(builder.Configuration.GetSection("ApplicationInsights:EnableDependencyTrackingTelemetryModule:OnlyLogFailed").Value ?? "false");
-//if (onlyLogFailedDependencies)
-//    builder.Services.AddApplicationInsightsTelemetryProcessor<SuccessfulDependencyFilter>();
+if (onlyLogFailedDependencies)
+    builder.Services.AddApplicationInsightsTelemetryProcessor<SuccessfulDependencyFilter>();
 
 var app = builder.Build();
 

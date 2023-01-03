@@ -1,27 +1,17 @@
-﻿using Azure.Messaging.ServiceBus.Administration;
+﻿using Azure.Identity;
+using Azure.Messaging.EventGrid;
 using Azure.Messaging.ServiceBus;
+using Azure.Messaging.ServiceBus.Administration;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.AzureAppConfiguration;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration.AzureAppConfiguration.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-
-using Shared.Settings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reactive.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Azure.Messaging.EventGrid;
-using Microsoft.Extensions.Configuration.AzureAppConfiguration.Extensions;
-using System.Text.Json;
-using Azure.Identity;
-using Microsoft.Azure.Amqp.Framing;
-using Azure;
-using System.Text.Json.Serialization;
-using Microsoft.Extensions.Configuration;
 using Microsoft.FeatureManagement;
+using Shared.Settings;
+using System.Reactive.Linq;
+using System.Text.Json;
 
 namespace Shared.Services
 {
