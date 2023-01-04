@@ -36,7 +36,12 @@ builder.Configuration.AddAzureAppConfiguration(opts =>
             var cid = builder.Configuration.GetSection("AppConfig:ServicePrincipal:ClientId").Value ?? "Unknown";
             var sec = builder.Configuration.GetSection("AppConfig:ServicePrincipal:Secret").Value ?? "Unknown";
             var connectionStringAppConfiguration = builder.Configuration.GetConnectionString("AppConfig");
-            opts.Connect(connectionStringAppConfiguration).ConfigureKeyVault(c => c.SetCredential(new ClientSecretCredential(tid, cid, sec)));
+            opts.Connect(connectionStringAppConfiguration).ConfigureKeyVault(kv =>
+            {
+                kv.SetCredential(new ClientSecretCredential(tid, cid, sec));
+                kv.SetSecretRefreshInterval("API:Settings:Secrets", TimeSpan.FromHours(24));
+            });
+            
             break;
         case RuntimeSettings.Environment.Production:
             string c = builder.Configuration.GetSection("AppConfiguration").Value ?? throw new Exception("AppConfiguration not set");
@@ -44,6 +49,7 @@ builder.Configuration.AddAzureAppConfiguration(opts =>
             opts.Connect(new Uri(c), new ManagedIdentityCredential(runtime.UAMI)).ConfigureKeyVault(kv =>
             {
                 kv.SetCredential(new ManagedIdentityCredential(runtime.UAMI));
+                kv.SetSecretRefreshInterval("API:Settings:Secrets", TimeSpan.FromHours(24));
             });
             break;
         case RuntimeSettings.Environment.Test or RuntimeSettings.Environment.PPE:
@@ -71,8 +77,6 @@ builder.Configuration.AddAzureAppConfiguration(opts =>
               });
     builder.Services.AddSingleton<IConfigurationRefresher>(opts.GetRefresher());
 }, optional: true);
-//builder.Services.AddFeatureManagement();
-
 
 builder.Services
        .AddAzureAppConfiguration()
