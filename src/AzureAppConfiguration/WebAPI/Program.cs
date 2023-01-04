@@ -58,10 +58,11 @@ builder.Configuration.AddAzureAppConfiguration(opts =>
               .ConfigureRefresh(refresh =>
               {
                   refresh
-                    .Register("Global", refreshAll: true).SetCacheExpiration(TimeSpan.FromDays(1))
-                    .Register("API:Settings", refreshAll: true).SetCacheExpiration(TimeSpan.FromDays(1))
-                    .Register("API:Settings", env, refreshAll: true).SetCacheExpiration(TimeSpan.FromDays(1))
-                    .Register("API:Settings:Secrets:SecretString", refreshAll: true).SetCacheExpiration(TimeSpan.FromDays(1));
+                    .Register("Global", refreshAll: true)
+                    .Register("API:Settings", refreshAll: true)
+                    .Register("API:Settings", env, refreshAll: true)
+                    .Register("API:Settings:Secrets:SecretString", refreshAll: true)
+                    .SetCacheExpiration(TimeSpan.FromDays(1));
               })
               .UseFeatureFlags(featureFlagOptions =>
               {
@@ -70,13 +71,14 @@ builder.Configuration.AddAzureAppConfiguration(opts =>
               });
     builder.Services.AddSingleton<IConfigurationRefresher>(opts.GetRefresher());
 }, optional: true);
-builder.Services.AddFeatureManagement();
+//builder.Services.AddFeatureManagement();
 
 
 builder.Services
        .AddAzureAppConfiguration()
        .AddHostedService<ConfigurationChangeSubscriberService>()
        .Configure<ChangeSubscriptionSettings>(builder.Configuration.GetSection("ChangeSubscription"))
+       .Configure<ChangeSubscriptionSettings>(builder.Configuration.GetSection("ConnectionStrings"))
        .AddFeatureManagement().AddFeatureFilter<PercentageFilter>().AddFeatureFilter<TimeWindowFilter>();
 
 builder.Services.AddDistributedMemoryCache();
