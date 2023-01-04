@@ -75,7 +75,7 @@ builder.Configuration.AddAzureAppConfiguration(opts =>
                   featureFlagOptions.CacheExpirationInterval = TimeSpan.FromDays(1);
                   featureFlagOptions.Select(KeyFilter.Any, LabelFilter.Null).Select(KeyFilter.Any, env);
               });
-    builder.Services.AddSingleton<IConfigurationRefresher>(opts.GetRefresher());
+    //builder.Services.AddSingleton<IConfigurationRefresher>(opts.GetRefresher());
 }, optional: true);
 
 builder.Services
