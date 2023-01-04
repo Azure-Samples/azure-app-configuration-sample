@@ -18,7 +18,7 @@ namespace Shared.Services
     public class ConfigurationChangeSubscriberService : IHostedService
     {
         private readonly IHostApplicationLifetime _hostApplicationLifetime;
-        private readonly IConfigurationRefresher _refresher;
+        private readonly IConfigurationRefresher? _refresher;
         private readonly ChangeSubscriptionSettings _changeSubscriptionSettings;
         private readonly ILogger<ConfigurationChangeSubscriberService> _logger;
         private readonly RuntimeSettings _environment;
@@ -26,10 +26,10 @@ namespace Shared.Services
         private readonly IFeatureManager _featureManager;
 
         public ConfigurationChangeSubscriberService(
-            IHostApplicationLifetime hostApplicationLifetime, IConfigurationRefresher refresher, IOptions<ChangeSubscriptionSettings> ChangeSubscriptionSettings, ILogger<ConfigurationChangeSubscriberService> logger, RuntimeSettings env, IConfigurationRoot configuration, IFeatureManager featureManager)
+            IHostApplicationLifetime hostApplicationLifetime, IConfigurationRefresherProvider refreshProvider, IOptions<ChangeSubscriptionSettings> ChangeSubscriptionSettings, ILogger<ConfigurationChangeSubscriberService> logger, RuntimeSettings env, IConfigurationRoot configuration, IFeatureManager featureManager)
         {
             _hostApplicationLifetime = hostApplicationLifetime;
-            _refresher = refresher;
+            _refresher = refreshProvider.Refreshers.FirstOrDefault(); ; 
             _changeSubscriptionSettings = ChangeSubscriptionSettings.Value;
             _logger = logger;
             _environment = env;
@@ -171,7 +171,6 @@ namespace Shared.Services
                 else if (pushNotification != null)
                 {
                     // Prompt Configuration Refresh based on the PushNotification
-                    
                     _refresher?.ProcessPushNotification(pushNotification, TimeSpan.FromSeconds(_changeSubscriptionSettings.MaxDelayBeforeCacheIsMarkedDirtyInSeconds ?? 30));
                     await args.CompleteMessageAsync(args.Message);
                 }
