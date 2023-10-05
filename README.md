@@ -9,10 +9,9 @@ languages:
 products:
 - azure
 - azure-app-service
-- azure-app-service-web
 - azure-key-vault
 - aspnet-core
-- dotnet-core
+- dotnet
 - azure-app-configuration
 
 name: External configuration store using Azure App Configuration Service
